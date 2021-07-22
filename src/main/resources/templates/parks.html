@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Here are the Parks</title>
+</head>
+<body>
+<ul th:each="park : ${parks}">
+
+<!--    wull show parks because the parks list does it-->
+    <th:block th:unless="${parks.isEmpty()}">
+    <li th:text="${park.name}"></li>
+    </th:block>
+</ul>
+
+</body>
+</html>
