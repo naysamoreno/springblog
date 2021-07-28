@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<body class="main">
+<header></header>
+<main class="container">
+    <div class="card offwhite-body">
+        <div class="card-image">
+            <img src="../static/img/big-bar.png" th:src="@{/img/big-bar.png}" alt="colorful bar" />
+        </div>
+        <div class="card-content">
+            <form action="" th:action="@{/posts/{id}/edit(id=${id})}" method="post" th:object="${post}">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="title" name="title" type="text" class="validate" th:field="*{title}" th:value="*{title}" />
+                        <label for="title">Title</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="body" name="body" class="materialize-textarea" th:field="*{body}" th:value="*{body}"></textarea>
+                        <label for="body">Body</label>
+                    </div>
+                </div>
+                <button type="submit" value="submit" class="waves-effect waves-purple btn-small indigo accent-3">Submit</button>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

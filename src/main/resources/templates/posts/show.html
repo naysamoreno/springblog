@@ -1,9 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org">
+<body class="main">
+
+<header></header>
+<main class="container">
+    <div class="card offwhite-body">
+        <div class="card-image">
+            <img src="../static/img/big-bar.png" th:src="@{/img/big-bar.png}" alt="colorful bar"/>
+        </div>
+        <div class="card-content">
+            <h3 class="card-title" th:text="${post.title}"/>
+            <p th:text="${post.body}" class="i-like-paragraphs"/>
+            <p style="display: flex; justify-content: flex-end; color: maroon" th:text="${post.user.email}" />
+            <br/>
+            <form th:action="@{/posts/delete/{id}(id = ${post.id})}" method="post">
+                <button class="waves-effect waves-purple btn-small indigo accent-3">Delete Post</button>
+            </form>
+            <a th:href="@{/posts/{id}/edit(id = ${post.id})}"
+               class="waves-effect waves-purple btn-small indigo accent-3">Edit Post</a>
+        </div>
+    </div>
+</main>
 </body>
 </html>
+©
