@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body class="main">
 
-<header></header>
+<header th:replace="partials/styles :: styles"></header>
+<nav th:replace="partials/navbar :: navbar"/>
 <main class="container">
     <div class="card offwhite-body">
         <div class="card-image">
@@ -13,11 +14,14 @@
             <p th:text="${post.body}" class="i-like-paragraphs"/>
             <p style="display: flex; justify-content: flex-end; color: maroon" th:text="${post.user.email}" />
             <br/>
+            <div th:if="${isPostOwner}">
             <form th:action="@{/posts/delete/{id}(id = ${post.id})}" method="post">
                 <button class="waves-effect waves-purple btn-small indigo accent-3">Delete Post</button>
             </form>
-            <a th:href="@{/posts/{id}/edit(id = ${post.id})}"
-               class="waves-effect waves-purple btn-small indigo accent-3">Edit Post</a>
+            <form th:action="@{/posts/{id}/edit(id = ${post.id})}" method="post">
+                <button class="btn">Edit Post</button>
+            </form>
+            </div>
         </div>
     </div>
 </main>
